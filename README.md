@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Atom - Bornes de Commande pour Restaurants Rapides
 
-## Getting Started
+![Atom Logo](public/logo.jpg)
 
-First, run the development server:
+## 🎯 Description
+
+**Atom** révolutionne la restauration rapide au Sénégal avec des bornes de commande élégantes, ultra-rapides et simples comme un smartphone. Plus de queue, plus d'erreur, paiement en 3 secondes.
+
+## ✨ Fonctionnalités
+
+- 🖥️ Interface utilisateur moderne et intuitive
+- 📱 Design responsive adapté aux bornes tactiles
+- ⚡ Animations fluides avec Framer Motion
+- 🎨 Design premium avec Tailwind CSS
+- 🚀 Performance optimale avec Next.js
+- 📊 Export statique pour déploiement facile
+
+## 🛠️ Technologies Utilisées
+
+- **Framework**: Next.js 16.0.1
+- **UI Library**: React 19.2.0
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion 12.23.24
+- **Language**: TypeScript 5
+
+## 📦 Installation
+
+```bash
+# Cloner le repository
+git clone https://github.com/VOTRE_USERNAME/atom-restaurant-kiosk.git
+
+# Naviguer dans le dossier
+cd atom-restaurant-kiosk
+
+# Installer les dépendances
+npm install
+```
+
+## 🚀 Utilisation
+
+### Mode Développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build de Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Le site statique sera généré dans le dossier `out/`.
 
-To learn more about Next.js, take a look at the following resources:
+### Lancer en Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Structure du Projet
 
-## Deploy on Vercel
+```
+atom/
+├── app/                    # Pages Next.js (App Router)
+│   ├── a-propos/          # Page À propos
+│   ├── bornes/            # Page Bornes
+│   ├── contact/           # Page Contact
+│   ├── technologie/       # Page Technologie
+│   ├── layout.tsx         # Layout principal
+│   └── page.tsx           # Page d'accueil
+├── components/            # Composants React réutilisables
+│   ├── Avantages.tsx      # Section avantages
+│   ├── BornesSection.tsx  # Section bornes
+│   ├── ContactForm.tsx    # Formulaire de contact
+│   ├── Footer.tsx         # Pied de page
+│   ├── Header.tsx         # En-tête
+│   ├── Hero.tsx           # Section hero
+│   └── ProductCard.tsx    # Carte produit
+├── public/                # Assets statiques
+│   ├── images/            # Images du projet
+│   └── logo.jpg           # Logo Atom
+├── styles/                # Styles globaux
+└── next.config.ts         # Configuration Next.js
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Déploiement
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Recommandé)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/VOTRE_USERNAME/atom-restaurant-kiosk)
+
+### Netlify
+
+1. Connectez votre repository GitHub
+2. Build command: `npm run build`
+3. Publish directory: `out`
+
+### GitHub Pages
+
+1. Activez GitHub Pages dans les paramètres du repository
+2. Source: Deploy from a branch
+3. Branch: `main`, folder: `/out`
+
+## 🎨 Personnalisation
+
+Les couleurs principales peuvent être modifiées dans `app/globals.css` et les composants individuels.
+
+## 📝 License
+
+Ce projet est sous licence privée.
+
+## 👥 Contact
+
+Pour toute demande de devis ou information, visitez notre [page de contact](https://votre-site.com/contact).
+
+---
+
+**Atom** - La technologie au service de la restauration rapide 🚀
