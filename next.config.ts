@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // ⬅️ active le mode statique
+  output: "export",
+  basePath: "/siteAtom",
   images: {
-    unoptimized: true, // ⬅️ obligatoire avec next export
+    unoptimized: true,
   },
 };
 
