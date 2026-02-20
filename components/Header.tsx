@@ -9,9 +9,9 @@ export default function Header() {
           <Image
             src="/siteAtom/logo.jpg"
             alt="Logo Atom"
-            width={50}
-            height={50}
-            className="object-contain h-full w-auto"
+            width={40}
+            height={40}
+            className="object-contain"
             priority
           />
         </Link>
