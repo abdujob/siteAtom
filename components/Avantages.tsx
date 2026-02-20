@@ -6,31 +6,31 @@ const avantages = [
     titre: "Un temps d’attente plus court",
     texte:
       "Grâce à nos bornes Atom, vos clients commandent directement sans faire la queue, réduisant considérablement le temps d’attente et fluidifiant le service.",
-    image: "/avantage-attente.jpg",
+    image: "/siteAtom/avantage-attente.jpg",
   },
   {
     titre: "Des commandes personnalisées",
     texte:
       "Les clients peuvent adapter leurs plats selon leurs goûts et restrictions alimentaires, garantissant une satisfaction maximale à chaque commande.",
-    image: "/avantage-personnalisation.jpg",
+    image: "/siteAtom/avantage-personnalisation.jpg",
   },
   {
     titre: "Accès au programme de fidélité",
     texte:
       "Les bornes Atom s’intègrent à votre système de fidélité pour récompenser vos clients réguliers et encourager leur retour.",
-    image: "/avantage-fidelite.jpg",
+    image: "/siteAtom/avantage-fidelite.jpg",
   },
   {
     titre: "Différents moyens de paiement",
     texte:
       "Nos bornes acceptent cartes, portefeuilles électroniques et paiements mobiles, offrant une expérience fluide et sans contrainte.",
-    image: "/avantage-paiement.jpg",
+    image: "/siteAtom/avantage-paiement.jpg",
   },
   {
     titre: "Une expérience client interactive",
     texte:
       "Les écrans tactiles haute définition et une interface intuitive rendent chaque commande agréable et moderne.",
-    image: "/avantage-interactif.jpg",
+    image: "/siteAtom/avantage-interactif.jpg",
   },
 
   // --- Pour vous et votre personnel ---
@@ -38,25 +38,25 @@ const avantages = [
     titre: "Augmentation de la valeur moyenne par client",
     texte:
       "Les suggestions automatiques et offres promotionnelles incitent les clients à ajouter des produits supplémentaires, augmentant ainsi le panier moyen.",
-    image: "/avantage-vente.jpg",
+    image: "/siteAtom/avantage-vente.jpg",
   },
   {
     titre: "Données sur vos ventes et préférences",
     texte:
       "Les bornes collectent des statistiques précieuses sur les ventes et les habitudes clients, vous permettant d’ajuster vos stratégies commerciales.",
-    image: "/avantage-donnees.webp",
+    image: "/siteAtom/avantage-donnees.webp",
   },
   {
     titre: "« Upselling » ciblé",
     texte:
       "Notre système intelligent propose automatiquement des options ou menus complémentaires selon la commande, favorisant la montée en gamme.",
-    image: "/avantage-upsell.webp",
+    image: "/siteAtom/avantage-upsell.webp",
   },
   {
     titre: "Réduction de la charge de travail",
     texte:
       "En automatisant la prise de commande, votre personnel peut se concentrer sur le service, la qualité et l’accueil client.",
-    image: "/avantage-charge.png",
+    image: "/siteAtom/avantage-charge.png",
   },
 ];
 
@@ -67,9 +67,8 @@ export default function Avantages() {
         {avantages.map((item, index) => (
           <div
             key={index}
-            className={`flex flex-col md:flex-row items-center gap-10 ${
-              index % 2 !== 0 ? "md:flex-row-reverse" : ""
-            }`}
+            className={`flex flex-col md:flex-row items-center gap-10 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""
+              }`}
           >
             {/* Image circulaire */}
             <div className="flex-shrink-0">

@@ -7,7 +7,7 @@ export default function Header() {
       <div className="flex justify-between items-center h-16 pl-12 pr-9 py-3">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo.jpg"
+            src="/siteAtom/logo.jpg"
             alt="Logo Atom"
             width={50}
             height={50}

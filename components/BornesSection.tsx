@@ -15,7 +15,7 @@ export default function BornesSection() {
             <ProductCard
               title="Borne Atom One"
               description="Compacte et élégante, idéale pour les petits espaces."
-              image="/borne3.png"
+              image="/siteAtom/borne3.png"
             />
           </motion.div>
 
@@ -23,7 +23,7 @@ export default function BornesSection() {
             <ProductCard
               title="Borne Atom"
               description="Pour un débit de commande maximal."
-              image="/borne4.png"
+              image="/siteAtom/borne4.png"
             />
           </motion.div>
 
@@ -31,7 +31,7 @@ export default function BornesSection() {
             <ProductCard
               title="Borne Atom Pro"
               description="Haute performance et design premium pour les grandes enseignes."
-              image="/borne1.png"
+              image="/siteAtom/borne1.png"
             />
           </motion.div>
         </div>
