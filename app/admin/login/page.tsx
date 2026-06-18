@@ -2,20 +2,31 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { adminApi } from "@/lib/api";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simplified hardcoded password for Atom
-    if (password === "admin123") {
-      localStorage.setItem("atom_admin_auth", "true");
-      router.push("/admin");
-    } else {
-      setError("Mot de passe incorrect.");
+    setError("");
+    setLoading(true);
+    try {
+      const res = await adminApi.login(password);
+      if (res && res.token) {
+        localStorage.setItem("atom_admin_auth", "true");
+        localStorage.setItem("atom_admin_token", res.token);
+        router.push("/admin");
+      } else {
+        setError("Erreur d'authentification.");
+      }
+    } catch (err: any) {
+      setError(err.message || "Mot de passe incorrect.");
+    } finally {
+      setLoading(false);
     }
   };
 

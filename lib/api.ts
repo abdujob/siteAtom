@@ -1,4 +1,5 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+export const BACKEND_URL = API_BASE_URL.replace(/\/api$/, "");
 
 export async function fetchApi(endpoint: string, options: RequestInit = {}) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
@@ -37,4 +38,10 @@ export const adminApi = {
     headers: { "Accept": "application/json" }
   }).then(res => res.json()),
   deleteProduct: (id: number) => fetchApi(`/products/${id}`, { method: "DELETE" }),
+
+  getOrders: (date?: string) => fetchApi(`/orders${date ? `?date=${date}` : ""}`),
+  getOrderStats: () => fetchApi("/orders/stats"),
+  login: (password: string) => fetchApi("/admin/login", { method: "POST", body: JSON.stringify({ password }) }),
+  verifyToken: (token: string) => fetchApi("/admin/verify", { method: "POST", body: JSON.stringify({ token }) }),
 };
+

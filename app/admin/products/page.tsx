@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { adminApi } from "../../../lib/api";
+import { adminApi, BACKEND_URL } from "../../../lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -171,7 +171,7 @@ export default function ProductsPage() {
                   <div className="flex items-center gap-4">
                     {p.image_url ? (
                       <div className="w-12 h-12 relative rounded-xl overflow-hidden bg-slate-100">
-                        <Image src={`http://localhost:8000${p.image_url}`} alt={p.name} fill className="object-cover" />
+                        <Image src={`${BACKEND_URL}${p.image_url}`} alt={p.name} fill className="object-cover" />
                       </div>
                     ) : (
                       <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-xl">🍔</div>

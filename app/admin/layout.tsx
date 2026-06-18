@@ -2,20 +2,47 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { adminApi } from "@/lib/api";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Simplified admin access check (using localStorage for this demo)
+  // Admin access check verifying backend token
   useEffect(() => {
     const auth = localStorage.getItem("atom_admin_auth");
-    if (auth !== "true" && pathname !== "/admin/login") {
-      router.push("/admin/login");
-    } else {
+    const token = localStorage.getItem("atom_admin_token");
+
+    if (pathname === "/admin/login") {
       setIsAuthenticated(true);
+      return;
     }
+
+    if (auth !== "true" || !token) {
+      setIsAuthenticated(false);
+      router.push("/admin/login");
+      return;
+    }
+
+    // Verify token validity with backend
+    adminApi.verifyToken(token)
+      .then((res) => {
+        if (res && res.valid) {
+          setIsAuthenticated(true);
+        } else {
+          localStorage.removeItem("atom_admin_auth");
+          localStorage.removeItem("atom_admin_token");
+          setIsAuthenticated(false);
+          router.push("/admin/login");
+        }
+      })
+      .catch(() => {
+        localStorage.removeItem("atom_admin_auth");
+        localStorage.removeItem("atom_admin_token");
+        setIsAuthenticated(false);
+        router.push("/admin/login");
+      });
   }, [pathname, router]);
 
   if (!isAuthenticated && pathname !== "/admin/login") return null;
@@ -52,12 +79,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           >
             🍔 Produits
           </Link>
+          <Link 
+            href="/admin/orders" 
+            className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${pathname.includes("/orders") ? "bg-orange-600" : "hover:bg-slate-800"}`}
+          >
+            🧾 Commandes
+          </Link>
         </nav>
 
         <div className="p-4 border-t border-slate-800">
           <button 
             onClick={() => {
               localStorage.removeItem("atom_admin_auth");
+              localStorage.removeItem("atom_admin_token");
               router.push("/admin/login");
             }}
             className="flex items-center gap-3 p-3 w-full rounded-lg hover:bg-red-900/30 text-red-400 transition-colors"
