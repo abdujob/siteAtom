@@ -22,8 +22,8 @@ export async function fetchApi(endpoint: string, options: RequestInit = {}) {
 
 export const adminApi = {
   getCategories: () => fetchApi("/categories"),
-  createCategory: (data: any) => fetchApi("/categories", { method: "POST", body: JSON.stringify(data) }),
-  updateCategory: (id: number, data: any) => fetchApi(`/categories/${id}`, { method: "PUT", body: JSON.stringify(data) }),
+  createCategory: (formData: FormData) => fetch(`${API_BASE_URL}/categories`, { method: "POST", body: formData, headers: { "Accept": "application/json" } }).then(res => res.json()),
+  updateCategory: (id: number, formData: FormData) => fetch(`${API_BASE_URL}/categories/${id}?_method=PUT`, { method: "POST", body: formData, headers: { "Accept": "application/json" } }).then(res => res.json()),
   deleteCategory: (id: number) => fetchApi(`/categories/${id}`, { method: "DELETE" }),
 
   getProducts: () => fetchApi("/products"),
