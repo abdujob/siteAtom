@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { adminApi, BACKEND_URL } from "../../../lib/api";
+import { adminApi, getImageUrl } from "../../../lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -149,7 +149,7 @@ export default function CategoriesPage() {
                 {cat.icon ? (
                   <div className="w-16 h-16 relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 flex-shrink-0">
                     <Image 
-                      src={`${BACKEND_URL}${cat.icon}`} 
+                      src={getImageUrl(cat.icon)} 
                       alt={cat.name} 
                       fill 
                       className="object-cover" 

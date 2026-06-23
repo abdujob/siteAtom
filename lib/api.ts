@@ -1,6 +1,14 @@
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
 export const BACKEND_URL = API_BASE_URL.replace(/\/api$/, "");
 
+export function getImageUrl(path: string | null | undefined): string {
+  if (!path) return "";
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return path;
+  }
+  return `${BACKEND_URL}${path.startsWith("/") ? "" : "/"}${path}`;
+}
+
 export async function fetchApi(endpoint: string, options: RequestInit = {}) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
