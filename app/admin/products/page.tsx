@@ -52,8 +52,8 @@ export default function ProductsPage() {
       setFormData({ name: "", description: "", price: "", category_id: "", image: null });
       setIsAdding(false);
       loadData();
-    } catch (err) {
-      alert("Erreur lors de l'ajout");
+    } catch (err: any) {
+      alert("Erreur lors de l'ajout : " + (err.message || err));
     }
   };
 
@@ -62,8 +62,8 @@ export default function ProductsPage() {
     try {
       await adminApi.deleteProduct(id);
       loadData();
-    } catch (err) {
-      alert("Erreur lors de la suppression");
+    } catch (err: any) {
+      alert("Erreur lors de la suppression : " + (err.message || err));
     }
   };
 

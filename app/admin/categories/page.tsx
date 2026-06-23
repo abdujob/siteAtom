@@ -42,8 +42,8 @@ export default function CategoriesPage() {
       setNewCatImage(null);
       setIsAdding(false);
       loadCategories();
-    } catch (err) {
-      alert("Erreur lors de l'ajout de la catégorie");
+    } catch (err: any) {
+      alert("Erreur lors de l'ajout de la catégorie : " + (err.message || err));
     }
   };
 
@@ -52,8 +52,8 @@ export default function CategoriesPage() {
     try {
       await adminApi.deleteCategory(id);
       loadCategories();
-    } catch (err) {
-      alert("Erreur lors de la suppression");
+    } catch (err: any) {
+      alert("Erreur lors de la suppression : " + (err.message || err));
     }
   };
 
