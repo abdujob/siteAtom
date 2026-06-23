@@ -28,23 +28,38 @@ export async function fetchApi(endpoint: string, options: RequestInit = {}) {
   return res.json();
 }
 
+export async function fetchForm(url: string, options: RequestInit = {}) {
+  const res = await fetch(url, {
+    ...options,
+    headers: {
+      "Accept": "application/json",
+      ...options.headers,
+    },
+  });
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ message: "Une erreur est survenue" }));
+    throw new Error(error.message || `Erreur serveur (${res.status})`);
+  }
+
+  return res.json();
+}
+
 export const adminApi = {
   getCategories: () => fetchApi("/categories"),
-  createCategory: (formData: FormData) => fetch(`${API_BASE_URL}/categories`, { method: "POST", body: formData, headers: { "Accept": "application/json" } }).then(res => res.json()),
-  updateCategory: (id: number, formData: FormData) => fetch(`${API_BASE_URL}/categories/${id}?_method=PUT`, { method: "POST", body: formData, headers: { "Accept": "application/json" } }).then(res => res.json()),
+  createCategory: (formData: FormData) => fetchForm(`${API_BASE_URL}/categories`, { method: "POST", body: formData }),
+  updateCategory: (id: number, formData: FormData) => fetchForm(`${API_BASE_URL}/categories/${id}?_method=PUT`, { method: "POST", body: formData }),
   deleteCategory: (id: number) => fetchApi(`/categories/${id}`, { method: "DELETE" }),
 
   getProducts: () => fetchApi("/products"),
-  createProduct: (formData: FormData) => fetch(`${API_BASE_URL}/products`, { 
+  createProduct: (formData: FormData) => fetchForm(`${API_BASE_URL}/products`, { 
     method: "POST", 
     body: formData,
-    headers: { "Accept": "application/json" } // Don't set Content-Type for FormData
-  }).then(res => res.json()),
-  updateProduct: (id: number, formData: FormData) => fetch(`${API_BASE_URL}/products/${id}?_method=PUT`, { 
+  }),
+  updateProduct: (id: number, formData: FormData) => fetchForm(`${API_BASE_URL}/products/${id}?_method=PUT`, { 
     method: "POST", 
     body: formData,
-    headers: { "Accept": "application/json" }
-  }).then(res => res.json()),
+  }),
   deleteProduct: (id: number) => fetchApi(`/products/${id}`, { method: "DELETE" }),
 
   getOrders: (date?: string) => fetchApi(`/orders${date ? `?date=${date}` : ""}`),
